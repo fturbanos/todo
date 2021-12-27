@@ -7,10 +7,19 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-primary {
+  margin-top: 15px;
+}
+
+.card {
+  width: 50%;
+  margin-bottom: 10px;
 }
 
 .App-header {
