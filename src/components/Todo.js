@@ -1,22 +1,19 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 
-function Todo({ todo, index, markTodo, removeTodo }) {
+const Todo = ({ todo, index, removeTask, setTask }) => {
   return (
     <div className="todo">
-      <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>
-        {todo.text}
-      </span>
-      <div>
-        <Button variant="outline-success" onClick={() => markTodo(index)}>
+      <span className={todo.complete ? "strike" : ""}>{todo.task}</span>
+      <div className="controls">
+        <span className="doneTask" onClick={() => setTask(index)}>
           ✓
-        </Button>{" "}
-        <Button variant="outline-danger" onClick={() => removeTodo(index)}>
+        </span>
+        <span className="removeTask" onClick={() => removeTask(index)}>
           ✕
-        </Button>
+        </span>
       </div>
     </div>
   );
-}
+};
 
 export default Todo;

@@ -1,55 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import data from "./data.json";
+import Todo from "./components/Todo";
+import FormTodo from "./components/FormTodo";
 import "./App.css";
-import { Card } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import FormTodo from "./components/FormTodo.js";
-import Todo from "./components/Todo.js";
 
 function App() {
-  const [todos, setTodos] = React.useState([
-    {
-      text: "This is a sampe todo",
-      isDone: false,
-    },
-  ]);
+  const [todos, setTodos] = useState(data);
 
-  const addTodo = (text) => {
-    const newTodos = [...todos, { text }];
+  const addTodo = (task) => {
+    const newTodos = [...todos, { task }];
     setTodos(newTodos);
   };
 
-  const markTodo = (index) => {
-    const newTodos = [...todos];
-    newTodos[index].isDone = true;
-    setTodos(newTodos);
-  };
-
-  const removeTodo = (index) => {
+  const removeTask = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
 
+  const setTask = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].complete = !newTodos[index].complete;
+    setTodos(newTodos);
+  }
+
   return (
-    <div className="app">
-      <div className="container">
-        <h1 className="text-center mb-4">Todo List</h1>
-        <FormTodo addTodo={addTodo} />
-        <div>
-          {todos.map((todo, index) => (
-            <Card>
-              <Card.Body>
-                <Todo
-                  key={index}
-                  index={index}
-                  todo={todo}
-                  markTodo={markTodo}
-                  removeTodo={removeTodo}
-                />
-              </Card.Body>
-            </Card>
-          ))}
-        </div>
+    <div className="App">
+      <h1>Todo List</h1>
+      <FormTodo addTodo={addTodo} />
+      <div>
+        {todos.map((todo, index) => (
+          <Todo index={index} todo={todo} removeTask={removeTask} setTask={setTask} />
+        ))}
       </div>
     </div>
   );

@@ -1,0 +1,22 @@
+[
+  {
+    "task": "Investigate issue",
+    "complete": false
+  },
+  {
+    "task": "Provide estimate and breakdown",
+    "complete": false
+  },
+  {
+    "task": "Implement fix",
+    "complete": false
+  },
+  {
+    "task": "Deploy",
+    "complete": false
+  },
+  {
+    "task": "Crossbrowser testing",
+    "complete": false
+  }
+]
